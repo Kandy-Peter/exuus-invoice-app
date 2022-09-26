@@ -1,5 +1,5 @@
-const invoice = require("./Invoices");
+const invoice = require("./invoices");
 
 module.exports = {
-    invoice,
+    invoice
 };

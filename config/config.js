@@ -1,23 +1,23 @@
 const creds = {
   development: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOSTNAME,
+    username: "kandy",
+    password: "0511Kandy",
+    database: "invoice_db",
+    host: "127.0.0.1",
     dialect: 'postgresql'
   },
   test: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOSTNAME,
+    username: "kandy",
+    password: "0511Kandy",
+    database:"invoice_db_test",
+    host: "127.0.0.1",
     dialect: 'postgresql'
   },
   production: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOSTNAME,
+    username: "kandy",
+    password: "0511Kandy",
+    database: "invoice_db_production",
+    host: "127.0.0.1",
     dialect: 'postgresql'
   }
 };
