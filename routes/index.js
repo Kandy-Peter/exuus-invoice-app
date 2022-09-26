@@ -1,9 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const {
+  getInvoices,
+  createInvoice,
+  updateInvoice,
+  deleteInvoice,
+  paidInvoice,
+} = require("../controllers/Invoices");
+
+const auth = require("../middleware/auth");
+
+router.get("/", getInvoices);
+router.post("/", auth, createInvoice);
+router.patch("/:id", auth, updateInvoice);
+router.delete("/:id", auth, deleteInvoice);
+router.patch("/:id/paid", auth, paidInvoice);
+
+module.exports = router;
 
 module.exports = router;
