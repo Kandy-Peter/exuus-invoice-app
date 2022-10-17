@@ -3,17 +3,17 @@ const path = require('path');
 module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'index.bundle.js',
   },
   devServer: {
-    // contentBase: path.resolve(__dirname, 'dist'),
-    port: 3000,
-    watchContentBase: true,
+    port: 3005,
+    hot : true,
+    open: true,
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$|jsx/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -31,6 +31,18 @@ module.exports = {
   },
   resolve: { 
     extensions: ['.js', '.jsx'],
+    fallback: {
+      "path": require.resolve("path-browserify"),
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false,
+      "buffer": false,
+    }
   },
 };
 
