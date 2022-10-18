@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import iconPlus from "../../assets/images/icon-plus.svg";
 import Dropdown from "./Dropdown";
 import Modal from "../utils/Modal";
+import { Button, Icon } from 'semantic-ui-react';
 
 const Header = ({ openForm, setOpenForm }) => {
   const [showModal, setShowModal] = useState(false);
@@ -26,15 +27,13 @@ const Header = ({ openForm, setOpenForm }) => {
         </h1>
         <div className="flex relative">
           <Dropdown />
-          <button
-            className="text-white text-xs font-semibold flex bg-secondaryTwo hover:bg-purple-500 transition px-2 py-2 pr-4 ml-4 rounded-full items-center"
-            onClick={() => handleClick()}
-          >
-            <div className="rounded-full h-8 w-8 flex items-center justify-center bg-white mr-2">
-              <img src={iconPlus} alt="add new invoice" />
-            </div>
-            New Invoice
-          </button>
+          
+          <div>
+            <Button icon labelPosition='right' onClick={() => handleClick()}>
+              Next
+              <Icon name='right arrow' />
+            </Button>
+          </div>
         </div>
       </div>
       {showModal && <Modal setShowModal={setShowModal} />}

@@ -1,7 +1,7 @@
 import {Response, Request} from 'express';
 const bcrypt = require("bcryptjs");
 const jwtToken = require("jsonwebtoken");
-const User = require("../src/models").User;
+const User = require("../models/user");
 
 const signin = async (req: Request, res:Response) => {
   const { email, password } = req.body;
