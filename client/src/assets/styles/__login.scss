@@ -13,13 +13,51 @@
     // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     width: 30%;
 
-    .bg-logbutton {
-      background-color: $blue_bg;
-    };
-  
-    .btn-hover {
-      &:hover {
-        background-color: $main_btn;
+    form {
+      width: 100%;
+
+      .btn-switch {
+        padding: 0 12%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        button {
+          border: none;
+          outline: none;
+          width: 100px;
+          height: 50px;
+          border-radius:  50px;
+        }
+
+        .bg-logbutton {
+          background-color: $blue_bg;
+          color: $main_white;
+        };
+      
+        .btn-hover {
+          background-color: transparent;
+          &:hover {
+            background-color: #2285d059;
+          }
+        }
+      }
+
+      .login-redirection {
+        margin: 1rem auto;
+        text-align: center;
+      }
+
+      .submit-button {
+        width: 100%;
+        height: 50px;
+        border-radius: 50px;
+        background-color: $blue_bg;
+        color: $main_white;
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 1rem;
       }
     }
 
@@ -28,4 +66,13 @@
     }
   }
   
+}
+
+@media screen and ( max-width: 770px) {
+  .form-container {
+    .form-row {
+      width: 95%;
+      padding: 1rem;
+    }
+  }
 }

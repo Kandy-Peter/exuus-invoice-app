@@ -94,19 +94,18 @@ const Auth = () => {
               <Label labelName="Password" />
               <Input inputName="password" type="password" />
             </Form.Field>
-            <div className="text-center">
-                <button
+            <div className="login-redirection">
+                <span
                   type="button"
                   onClick={() => setIsLogin(!isLogin)}
-                  className="login-redirection"
                 >
                   {!isLogin
                     ? "Already have an account? Log In"
                     : "Don't have an account? Sign Up"}
-                </button>
+                </span>
                 <ErrorMessage errorMessage={authData?.message} />
               </div>
-            <Button type='submit'>{isLogin ? "Log In" : "Sign Up"}</Button>
+            <Button type='submit' className="submit-button">{isLogin ? "Log In" : "Sign Up"}</Button>
           </Form>
         </FormProvider>
       </div>

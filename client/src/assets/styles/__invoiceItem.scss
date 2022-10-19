@@ -10,3 +10,11 @@
     padding: 1rem;
   }
 }
+
+@media screen and ( max-width: 770px) {
+  .invoices-container {
+    .invoice-skeleton {
+      width: 100%;
+    }
+  }
+}
