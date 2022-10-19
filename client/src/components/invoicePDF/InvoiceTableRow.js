@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     marginTop: 18,
   },
   description: {
-    color: "#dfe3fa",
+    color: "#000",
     fontSize: 12,
   },
 });

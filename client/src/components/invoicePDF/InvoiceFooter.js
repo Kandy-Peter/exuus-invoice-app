@@ -6,13 +6,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#000000",
+    backgroundColor: "#fefefe",
     padding: 10,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
   },
   description: {
-    color: "#dfe3fa",
+    color: "#000",
     fontSize: 12,
   },
 });

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   description: {
-    color: "#dfe3fa",
+    color: "#000",
     fontSize: 12,
   },
 });

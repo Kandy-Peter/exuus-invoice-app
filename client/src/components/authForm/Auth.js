@@ -32,24 +32,7 @@ const Auth = () => {
       dispatch(signup(data, history));
     }
   };
-
-  // const googleSuccess = async (res) => {
-  //   const result = res?.profileObj;
-  //   const token = res?.tokenId;
-
-  //   try {
-  //     dispatch({ type: "AUTH", data: { result, token } });
-  //     history.push("/");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const googleFailure = (error) => {
-  //   console.log(error);
-  //   console.log("Google sign in was unsuccessful");
-  // };
-
+  
   return (
     <section className="form-container centered">
       <div className="form-row centered">

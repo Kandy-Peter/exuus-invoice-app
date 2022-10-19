@@ -21,7 +21,7 @@ const HeaderComponent = ({ openForm, setOpenForm }) => {
     <>
       <div className="header">
         <Header as='h2'>
-          <Icon name='settings' />
+          <Icon name='money' />
           <Header.Content>
             My invoices
             <Header.Subheader>{`There are ${invoices.length} total invoices.`}</Header.Subheader>

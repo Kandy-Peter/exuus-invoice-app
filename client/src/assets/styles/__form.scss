@@ -59,13 +59,30 @@
         font-weight: 500;
         margin-top: 1rem;
       }
+
+      .add-input-btn {
+        width: 100%;
+      }
     }
 
     .input {
       width: 100%;
     }
+
+    .clm-form {
+      margin: 1rem 0;
+    }
   }
   
+}
+
+.form-visible {
+  background-color: rgba(0, 0, 0, 0.468);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 @media screen and ( max-width: 770px) {

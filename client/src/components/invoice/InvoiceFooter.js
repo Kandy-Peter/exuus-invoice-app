@@ -6,6 +6,7 @@ import { paidInvoice } from "../../actions/invoices";
 import InvoicePDF from "../invoicePDF/InvoicePDF";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
+import { Button, Icon } from "semantic-ui-react";
 
 const InvoiceFooter = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
@@ -21,9 +22,8 @@ const InvoiceFooter = ({ data }) => {
   }
 
   return (
-    <div className=" mt-6">
-      <button
-        className="w-full text-white text-sm font-bold px-6 py-4 rounded-full transition bg-borderOne hover:bg-gray-200 hover:text-borderOne"
+    <div className="item-footer">
+      <Button
         onClick={async () => {
           const doc = <InvoicePDF data={data[0]} />;
           const asPdf = pdf([]);
@@ -31,32 +31,43 @@ const InvoiceFooter = ({ data }) => {
           const blob = await asPdf.toBlob();
           saveAs(blob, "invoice.pdf");
         }}
+        icon
+        labelPosition="left"
+        primary
       >
+        <Icon name="download" />
         Download Invoice
-      </button>
+      </Button>
       {user?.result && id === data[0]?.creator ? (
-        <div className="flex md:hidden justify-end bg-primaryOne p-6">
-          <button
-            className="text-white text-xs font-bold px-6 py-4 rounded-full bg-borderOne transition bg-borderOne hover:bg-gray-200 hover:text-borderOne"
+        <>
+          <Button
             onClick={() => setOpenForm(!openForm)}
+            icon
+            labelPosition="left"
+            positive
           >
+            <Icon name="edit" />
             Edit
-          </button>
-          <button
-            className="text-white text-xs font-bold px-4 py-2 sm:px-6 md:py-4 rounded-full bg-buttonOne hover:bg-red-400 transition mx-3"
+          </Button>
+          <Button
+            icon
+            labelPosition="left"
             onClick={() => setShowModal(!showModal)}
+            negative
           >
-            Delete
-          </button>
+              <Icon name="trash" />
+              Delete
+          </Button>
+        
           {data[0].status !== "paid" && (
             <button
-              className="text-white text-xs font-bold bg-secondaryTwo px-6 py-4 rounded-full hover:bg-purple-500 transition"
+              className=""
               onClick={() => dispatch(paidInvoice(data[0]._id))}
             >
               Mark As Paid
             </button>
           )}
-        </div>
+        </>
       ) : null}
       {showModal && (
         <DeleteModal

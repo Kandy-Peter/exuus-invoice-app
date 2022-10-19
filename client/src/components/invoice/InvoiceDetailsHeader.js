@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { paidInvoice } from "../../actions/invoices";
 import DeleteModal from "../utils/DeleteModal";
 import { capitalizeFirstLetter } from "../utils/utils";
+import { Segment } from "semantic-ui-react";
 
 const InvoiceDetailsHeader = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,30 +14,28 @@ const InvoiceDetailsHeader = ({ data }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   let badgeClass = "";
-  let dotClass = "";
+  let color = "";
   switch (data[0]?.status) {
     case "pending":
-      badgeClass = "bg-badgeBgTwo text-badgeTwo";
-      dotClass = "bg-badgeTwo";
+      badgeClass = "pending";
+      color = "orange";
       break;
     case "paid":
-      badgeClass = "bg-badgeBgOne text-badgeOne";
-      dotClass = "bg-badgeOne";
+      badgeClass = "paid";
+      color = "green";
       break;
     default:
-      badgeClass = "bg-badgeBgThree text-neutral";
-      dotClass = "bg-neutral";
+      badgeClass = "draft";
+      color = "blue";
   }
   if (data.length > 0) {
     return (
-      <>
-        <div className="flex justify-between items-center w-full bg-primaryOne p-6 mt-6 rounded-lg">
-          <div className="flex items-center justify-between w-full md:justify-start md:w-max">
-            <small className="text-neutral text-xs">Status</small>
+      <Segment color={color} className="invoice-skeleton">
+          <div className="item-header">
+            <small className="text-neutral text-xs">Status:</small>
             <div
-              className={`${badgeClass} ml-4 flex items-center w-28 p-4 rounded-lg shadow-sm`}
+              className={`${badgeClass}`}
             >
-              <div className={`${dotClass} h-2 w-2 rounded-full mr-2`}></div>
               <small>{capitalizeFirstLetter(data[0]?.status)}</small>
             </div>
           </div>
@@ -64,7 +63,6 @@ const InvoiceDetailsHeader = ({ data }) => {
               )}
             </div>
           ) : null}
-        </div>
         {showModal && (
           <DeleteModal
             invoiceId={data[0]._id}
@@ -79,7 +77,7 @@ const InvoiceDetailsHeader = ({ data }) => {
             setOpenForm={setOpenForm}
           />
         ) : null}
-      </>
+      </Segment>
     );
   }
   return null;
