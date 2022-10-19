@@ -21,7 +21,6 @@ module.exports = {
       req.body.invoices.forEach((item: any) => {
         totalInv += item.total;
       });
-    // req.body.total = total;
     Invoice.create({ ...invoice, creator: req.userId, total: totalInv })
       .then((invoice: any) => res.json(invoice))
       .catch((err: any) => res.status(400).json({ error: err }));

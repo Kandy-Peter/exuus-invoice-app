@@ -1,18 +1,24 @@
-const createError = require('http-errors');
-const express = require('express');
-const appPath = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const cors = require('cors');
+import express, {Response, Request} from 'express';
+import db from './models';
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+import createError from 'http-errors';
+import appPath from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import cors from 'cors';
+
+import indexRouter from './routes/index';
+import usersRouter from './routes/users';
 
 const app = express();
+
+const port = process.env.PORT || 5000;
 
 // view engine setup
 app.set('views', appPath.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+db.sequelize.sync();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,11 +31,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req: any, res: any, next: any) {
+app.use(function(req: Request, res: Request, next: any) {
   next(createError(404));
 });
 // error handler
-app.use(function(err: any, req: any, res: any, next: any) {
+app.use(function(err: any, req: Request, res: Response, next: any) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -38,5 +44,9 @@ app.use(function(err: any, req: any, res: any, next: any) {
   res.status(err.status || 500);
   res.render('error');
 })
+
+app.listen(port, () => {
+  console.log('Server is running on port 3000');
+});
 
 module.exports = app;
