@@ -14,6 +14,7 @@ import Input from "../utils/Input";
 import Item from "./Item";
 import moment from "moment";
 import { useDispatch } from "react-redux";
+import { Button, Form, Divider } from 'semantic-ui-react'
 import { createInvoice, updateInvoice } from "../../actions/invoices";
 
 const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
@@ -90,109 +91,122 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
 
   return (
     <div
-      className={`transition ${
-        !openForm ? "transform translate-x-full hidden" : "-translate-x-full"
+      className={` ${
+        !openForm ? " hidden" : "form-visible form-container"
       }`}
+      // className={`transition ${
+      //   !openForm ? "transform translate-x-full hidden" : "-translate-x-full"
+      // }`}
     >
       <div
         className="fixed top-0 left-0 flex items-center justify-center w-full h-screen z-10 bg-white bg-opacity-10"
         onClick={() => setOpenForm(!openForm)}
       ></div>
-      <div className="fixed top-0 left-0 z-20 md:ml-24">
+      <div>
         <FormProvider {...formMethods}>
-          <form
+          <Form
             onSubmit={handleSubmit((data) => onSubmit(data, "pending"))}
-            className="w-screen max-w-2xl h-screen bg-primaryTwo px-4 py-14 md:p-14"
+            className="form-row"
           >
-            <h1 className="text-white text-2xl font-bold mb-10">
-              Create Invoice
-            </h1>
-            <div className="overflow-scroll w-full h-full flex flex-col pr-4 md:pr-7 content-area pb-10">
-              <small className="text-secondaryTwo font-bold text-xs">
-                Bill Form
-              </small>
-              <div>
-                <Label labelName="Street Address" />
-                <Input inputName="streetAddress" type="text" />
-              </div>
-              <div className="flex justify-between flex-wrap md:flex-nowrap">
-                <div>
+            <h1>{invoice ? "Edit Invoice" : "Create Invoice"}</h1>
+            <div className="clm-form">
+              <Form.Group>
+                <Form.Field>
+                  <Label labelName="Street Address" />
+                  <Input inputName="streetAddress" type="text" />
+                </Form.Field>
+                <Form.Field>
                   <Label labelName="City" />
                   <Input inputName="city" type="text" />
-                </div>
-                <div className="md:mx-2">
+                </Form.Field>
+              </Form.Group>
+              <Form.Group>
+                <Form.Field>
+                  <Label labelName="Street Address" />
+                  <Input inputName="streetAddress" type="text" />
+                </Form.Field>
+                <Form.Field>
+                    <Label labelName="City" />
+                    <Input inputName="city" type="text" />
+                </Form.Field>
+              </Form.Group>
+                <Form.Field className="md:mx-2">
                   <Label labelName="Post Code" />
                   <Input inputName="postCode" type="text" appearance />
-                </div>
-                <div>
+                </Form.Field>
+                <Form.Field>
                   <Label labelName="Country" />
                   <Input inputName="country" type="text" />
-                </div>
-              </div>
+                </Form.Field>
+              <Divider />
               <small className="text-secondaryTwo font-bold text-xs mt-8">
                 Bill To
               </small>
-              <div>
+              <Form.Field>
                 <Label labelName="Client Name" />
                 <Input inputName="clientName" type="text" />
-              </div>
-              <div>
+              </Form.Field>
+              <Form.Field>
                 <Label labelName="Client Email" />
                 <Input inputName="clientEmail" type="email" />
-              </div>
-              <div>
-                <Label labelName="Street Address" />
-                <Input inputName="clientStreetAddress" type="text" />
-              </div>
-              <div className="flex flex-wrap md:flex-nowrap justify-between">
-                <div>
-                  <Label labelName="City" />
-                  <Input inputName="clientCity" type="text" />
-                </div>
-                <div className="md:mx-2">
+              </Form.Field>
+              <Form.Group>
+                <Form.Field>
+                  <Label labelName="Street Address" />
+                  <Input inputName="clientStreetAddress" type="text" />
+                </Form.Field>
+                  <Form.Field>
+                    <Label labelName="City" />
+                    <Input inputName="clientCity" type="text" />
+                  </Form.Field>
+              </Form.Group>
+              <Form.Group>
+                <Form.Field className="md:mx-2">
                   <Label labelName="Post Code" />
                   <Input inputName="clientPostCode" type="text" appearance />
-                </div>
-                <div>
+                </Form.Field>
+                <Form.Field>
                   <Label labelName="Country" />
                   <Input inputName="clientCountry" type="text" />
-                </div>
-              </div>
-              <div className="flex justify-between">
-                <div className="w-1/2 mr-2">
-                  <Label labelName="Invoice Date" />
-                  <Controller
-                    control={control}
-                    name="invoiceDate"
-                    render={({ field }) => (
-                      <DatePicker
-                        className="w-full bg-primaryOne p-3 rounded-md shadow-md border border-borderOne focus:outline-none focus:border-secondaryOne transition text-white font-bold text-xs"
-                        onChange={(date) => field.onChange(date)}
-                        selected={field.value}
-                        dateFormat="dd/MM/yyyy"
-                      />
-                    )}
-                  />
-                </div>
-                <div className="w-1/2 ml-2">
-                  <Label labelName="Payment Terms" />
-                  <select
-                    className="w-full bg-primaryOne p-3 rounded-md shadow-md border border-borderOne focus:outline-none focus:border-secondaryOne transition text-white font-bold text-xs"
-                    name="paymentTerms"
-                    id="paymentTerms"
-                    {...register("paymentTerms", { required: true })}
-                  >
-                    <option value="1">Next 1 Day</option>
-                    <option value="7">Next 7 Days</option>
-                    <option value="14">Next 14 Days</option>
-                    <option value="30">Next 30 Days</option>
-                  </select>
-                </div>
-              </div>
-              <div>
+                </Form.Field>
+              </Form.Group>
+              <Form.Group>
+                  <Form.Field>
+                    <Label labelName="Invoice Date" />
+                    <Controller
+                      control={control}
+                      name="invoiceDate"
+                      render={({ field }) => (
+                        <DatePicker
+                          className="w-full bg-primaryOne p-3 rounded-md shadow-md border border-borderOne focus:outline-none focus:border-secondaryOne transition text-white font-bold text-xs"
+                          onChange={(date) => field.onChange(date)}
+                          selected={field.value}
+                          dateFormat="dd/MM/yyyy"
+                        />
+                      )}
+                    />
+                  </Form.Field>
+                  <Form.Field className="w-1/2 ml-2">
+                    <Label labelName="Payment Terms" />
+                    <select
+                      className="w-full bg-primaryOne p-3 rounded-md shadow-md border border-borderOne focus:outline-none focus:border-secondaryOne transition text-white font-bold text-xs"
+                      name="paymentTerms"
+                      id="paymentTerms"
+                      {...register("paymentTerms", { required: true })}
+                    >
+                      <option value="1">Next 1 Day</option>
+                      <option value="7">Next 7 Days</option>
+                      <option value="14">Next 14 Days</option>
+                      <option value="30">Next 30 Days</option>
+                    </select>
+                  </Form.Field>
+              </Form.Group>
+
+              <Form.Field>
                 <Label labelName="Descriptions" />
                 <Input inputName="description" />
-              </div>
+              </Form.Field>
+              <Divider />
               <p className="text-gray-500 text-lg mt-6 mb-2 font-bold">
                 Item List
               </p>
@@ -206,38 +220,37 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
                   />
                 ))}
               </div>
-              <button
-                className="w-full bg-borderOne hover:bg-primaryOne transition text-white border-none rounded-full mt-4 p-4 text-xs font-bold flex justify-center"
+              <Button
+              className="add-input-btn"
                 onClick={(e) => {
                   e.preventDefault();
                   append({ name: "", quantity: "", price: "", total: 0 });
                 }}
+                primary
               >
-                <span className="font-semibold mr-1">+</span>Add New Item
-              </button>
+                Add New Item
+              </Button>
             </div>
-            <div className="flex justify-between py-4">
-              <button
-                type="button"
-                className="rounded-full text-neutral text-xs bg-primaryOne hover:bg-white hover:text-primaryOne transition outline-none px-4 md:px-8 py-4 font-bold"
+            <Button.Group>
+              <Button
                 onClick={() => setOpenForm(!openForm)}
+                negative
               >
                 Discard
-              </button>
-              <div className="md:pr-7">
-                <button
-                  type="button"
-                  className="rounded-full text-neutral transition hover:bg-opacity-60 text-xs bg-primaryOne outline-none px-4 md:px-8 py-4 font-bold"
-                  onClick={() => onSubmit(formData, "draft")}
-                >
-                  Save as Draft
-                </button>
-                <button className="rounded-full text-neutral text-xs bg-secondaryTwo hover:bg-purple-500 transition outline-none ml-1 md:ml-2 px-4 md:px-8 py-4 font-bold">
-                  Save & Send
-                </button>
-              </div>
-            </div>
-          </form>
+              </Button>
+              <Button.Or />
+              <Button
+                onClick={() => onSubmit(formData, "draft")}
+                color="grey"
+              >
+                Save as Draft
+              </Button>
+              <Button.Or />
+              <Button positive>
+                Save & Send
+              </Button>
+            </Button.Group>
+          </Form>
         </FormProvider>
       </div>
     </div>

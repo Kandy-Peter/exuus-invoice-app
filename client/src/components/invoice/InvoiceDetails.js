@@ -21,9 +21,9 @@ const InvoiceDetails = (props) => {
   }, [id, invoice]);
 
   return (
-    <div className="mx-auto px-4 pb-4 md:px-12 md:py-16 w-full max-w-3xl">
-      <Link to="/" className="text-neutral text-xs">
-        <img className="inline -mt-1 mr-4" src={backIcon} alt="back" /> Go back
+    <div className="item-container">
+      <Link to="/" className="back-link">
+        <img src={backIcon} alt="back" /> Go back
       </Link>
       <InvoiceDetailsHeader data={invoiceData} />
       <InvoiceCardDetails data={invoiceData} />

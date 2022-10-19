@@ -32,7 +32,7 @@ Font.register({
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
-    backgroundColor: "#141625",
+    backgroundColor: "#f9fbff",
     padding: 80,
     fontFamily: "Inter",
   },
@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     height: 60,
     width: "100%",
     borderRadius: 4,
-    backgroundColor: "#1F2139",
+    backgroundColor: "#fff",
     paddingHorizontal: 20,
   },
   status: {
-    color: "#dfe3fa",
+    color: "#000",
     fontSize: 12,
   },
   badge: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   section: {
-    backgroundColor: "#1F2139",
+    backgroundColor: "#fff",
     width: "100%",
     borderRadius: 4,
     padding: 20,
@@ -77,20 +77,20 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   text: {
-    color: "#ffffff",
+    color: "#000",
     fontWeight: "bold",
     fontSize: 16,
   },
   description: {
-    color: "#dfe3fa",
+    color: "#000",
     fontSize: 12,
     textAlign: "right",
   },
 });
 
 const InvoicePDF = ({ data }) => {
-  let badgeBgColor = "#292C45";
-  let badgeTextColor = "#DFE3FA";
+  let badgeBgColor = "#fdfdfd";
+  let badgeTextColor = "#000";
 
   switch (data.status) {
     case "paid":

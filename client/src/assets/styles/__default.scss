@@ -35,6 +35,11 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .centered-item {
   margin: 0 auto;
 }
@@ -42,4 +47,27 @@ li {
 button {
   border: none;
   outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.paid {
+  color: rgb(0, 147, 42);
+}
+
+.pending {
+  color: rgb(199, 129, 0);
+}
+
+.draft {
+  color: rgb(158, 0, 0);
+}
+
+.logout-btn {
+  position: fixed;
+  bottom: 2rem;
+  left: 10rem;
+  z-index: 1000;
 }

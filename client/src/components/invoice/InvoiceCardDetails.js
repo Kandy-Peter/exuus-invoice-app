@@ -1,123 +1,114 @@
 import React from "react";
 import { formatDate, getSubstring } from "../utils/utils";
+import { Divider, Table } from "semantic-ui-react";
 
 const InvoiceCardDetails = ({ data }) => {
   if (data.length > 0) {
     return (
-      <div className="bg-primaryOne rounded-md mt-6 p-6">
-        <div className="flex justify-between">
+      <div className="item-details item-clm">
+        <div className="">
           <div>
-            <h1 className="text-white text-base font-bold">
-              <span className="text-secondaryThree">#</span>
+            <h1 className="">
+              <span className="">#</span>
               {getSubstring(data[0]._id, 6)}
             </h1>
-            <small className="text-neutral text-xs">
+            <p>
               {data[0].description}
-            </small>
+            </p>
           </div>
-          <address className="text-neutral text-xs not-italic text-left">
-            <p className="text-neutral text-xs text-right">
+          <Divider />
+          <address className="">
+            <p className=" ">
               {data[0].streetAddress}
             </p>
-            <p className="text-neutral text-xs text-right">{data[0].city}</p>
-            <p className="text-neutral text-xs text-right">
+            <p className=" ">{data[0].city}</p>
+            <p className=" ">
               {data[0].postCode}
             </p>
-            <p className="text-neutral text-xs text-right">{data[0].country}</p>
+            <p className=" ">{data[0].country}</p>
           </address>
         </div>
-        <div className="flex justify-between flex-wrap my-10">
-          <div>
-            <div>
-              <small className="text-neutral text-xs">Invoice Date</small>
-              <h2 className="text-sm text-white font-bold">
+        <Divider />
+        <div className=" ">
+          <div className="date-row">
+            <div className="date-clm">
+              <p>Invoice Date: </p>
+              <span className="">
                 {formatDate(data[0].invoiceDate)}
-              </h2>
+              </span>
             </div>
-            <div className="mt-5">
-              <small className="text-neutral text-xs">Payment Due</small>
-              <h2 className="text-sm text-white font-bold">
+            
+            <div  className="date-clm">
+              <p>Payment Due: </p>
+              <span>
                 {formatDate(data[0].paymentDue)}
-              </h2>
+              </span>
             </div>
+            
           </div>
+          <Divider />
           <address className="text-neutral not-italic mx-2">
             <div>
-              <small className="text-neutral text-xs">Bill To</small>
-              <h2 className="text-sm text-white font-bold">
+              <small className="">Bill To</small>
+              <h2 className="">
                 {data[0].clientName}
               </h2>
             </div>
             <div className="mt-2">
-              <p className="text-neutral text-xs">
+              <p className="">
                 {data[0].clientStreetAddress}
               </p>
-              <p className="text-neutral text-xs">{data[0].clientCity}</p>
-              <p className="text-neutral text-xs">{data[0].clientPostCode}</p>
-              <p className="text-neutral text-xs">{data[0].clientCountry}</p>
+              <p className="">{data[0].clientCity}</p>
+              <p className="">{data[0].clientPostCode}</p>
+              <p className="">{data[0].clientCountry}</p>
             </div>
           </address>
+          <Divider />
           <div className="">
-            <small className="text-neutral text-xs">Sent to</small>
-            <h2 className="text-sm text-white font-bold">
+            <p className="">Sent to</p>
+            <h2 className="">
               {data[0].clientEmail}
             </h2>
           </div>
         </div>
-        <div className="bg-borderOne rounded-lg overflow-hidden">
-          <table className="w-full border-separate pt-8 border-spacing-px">
-            <thead>
-              <tr className="mb-5">
-                <th className="text-left pl-6 pb-6 text-neutral font-medium text-xs">
-                  Item Name
-                </th>
-                <th className="text-left pb-6 text-neutral font-medium text-xs">
-                  QTY.
-                </th>
-                <th className="text-right pb-6 text-neutral font-medium text-xs">
-                  Price
-                </th>
-                <th className="text-right pr-6 pb-6 text-neutral font-medium text-xs">
-                  Total
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {data[0].invoices.map((item, index) => (
-                <tr key={index}>
-                  <td className="text-left pl-6 pb-6 text-neutral font-medium text-xs">
-                    {item.name}
-                  </td>
-                  <td className="text-left pb-6 text-neutral font-medium text-xs">
-                    {item.quantity}
-                  </td>
-                  <td className="text-right pb-6 text-neutral font-medium text-xs">
-                    ${item.price}
-                  </td>
-                  <td className="text-right pr-6 pb-6 text-neutral font-medium text-xs">
-                    ${item.total}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-            <tfoot className="bg-black text-neutral">
-              <tr>
-                <td className="py-8 pl-6 font-bold text-xs">{`Amount ${
+        <Table singleLine>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Item name</Table.HeaderCell>
+              <Table.HeaderCell>Quantity</Table.HeaderCell>
+              <Table.HeaderCell>Price</Table.HeaderCell>
+              <Table.HeaderCell>Total</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          {data[0].invoices.map((item, index) => (
+            <Table.Body key={index}>
+              <Table.Row>
+                <Table.Cell>{item.name}</Table.Cell>
+                <Table.Cell>{item.quantity}</Table.Cell>
+                <Table.Cell>${item.price}</Table.Cell>
+                <Table.Cell>${item.total}</Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          ))}
+
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan="3">
+                <h3 className="text-neutral">{`Amount ${
                   data[0].status === "paid" ? "Paid" : "Due"
-                }`}</td>
-                <td></td>
-                <td></td>
-                <td className="text-right pr-6 text-2xl font-bold">
-                  ${data[0].total}
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+                }`}</h3>
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <h3 className="text-neutral">${data[0].total}</h3>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
       </div>
     );
   } else {
-    return <h1 className="text-white text-center">Loading....</h1>;
+    return <h1 className="">Loading....</h1>;
   }
 };
 

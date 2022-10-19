@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "react-avatar";
+import { Button, Icon } from "semantic-ui-react";
 
 const ProfileModal = ({ logout, user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,25 +18,26 @@ const ProfileModal = ({ logout, user }) => {
             onClick={() => setIsOpen(!isOpen)}
             className=""
           />
-          <p>Avatar button</p>
         </div>
       )}
       {isOpen && (
         <ul
-          className="absolute right-2 top-20 md:-top-4 md:-right-40 p-2 mt-2 space-y-2 text-gray-300 bg-primaryOne rounded-md shadow-md"
           aria-label="sub-menu"
         >
           <li>
-            <button
+            <Button
               onClick={() => {
                 logout();
                 setIsOpen(!isOpen);
-                history.push("/auth");
+                history("/auth");
               }}
-              className="block px-2 py-1 text-white"
+              icon
+              labelPosition="left"
+              className="logout-btn"
             >
-              <i className="fas fa-sign-out-alt mr-2"></i>Logout
-            </button>
+              <Icon name="log out" />
+              Logout
+            </Button>
           </li>
         </ul>
       )}

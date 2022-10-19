@@ -37,7 +37,6 @@ const Sidebar = () => {
         <Button icon='home' circular color="white" />
       </Link>
       <div className="logging-btn">
-        {/* <img src={iconSun} alt="theme" className="pr-8 md:pr-0" /> */}
         <div className=""></div>
         {user ? (
           <ProfileModal logout={logout} user={user} />

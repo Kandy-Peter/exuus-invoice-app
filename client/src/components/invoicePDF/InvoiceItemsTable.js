@@ -5,7 +5,7 @@ import InvoiceTableRow from "./InvoiceTableRow";
 const styles = StyleSheet.create({
   tableContainer: {
     flexDirection: "column",
-    backgroundColor: "#252945",
+    backgroundColor: "#fff",
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
     padding: 10,
