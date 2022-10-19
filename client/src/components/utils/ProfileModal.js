@@ -15,8 +15,9 @@ const ProfileModal = ({ logout, user }) => {
             size="50"
             round={true}
             onClick={() => setIsOpen(!isOpen)}
-            className="block overflow-hidden focus:outline-none cursor-pointer"
+            className=""
           />
+          <p>Avatar button</p>
         </div>
       )}
       {isOpen && (

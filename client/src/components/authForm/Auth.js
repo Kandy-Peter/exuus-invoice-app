@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { signin, signup } from "../../actions/auth";
 import ErrorMessage from "../utils/ErrorMessage";
+import { Button, Form } from 'semantic-ui-react'
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -50,17 +51,17 @@ const Auth = () => {
   // };
 
   return (
-    <section className="col-start-1 col-end-2 md:col-start-2 md:col-end-3 row-start-2 row-end-3 md:row-start-1 md:row-end-2 mx-3 sm:mx-0 md:my-auto">
-      <div className=" w-full max-w-md bg-primaryOne px-6 py-8 rounded-md shadow-md mx-auto">
+    <section className="form-container centered">
+      <div className="form-row centered">
         <FormProvider {...formMethods}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="w-full flex justify-around mb-2">
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <div className="btn-switch">
               <button
                 className={`${
                   isLogin
-                    ? "bg-secondaryTwo"
-                    : "transition bg-transparent hover:bg-secondaryTwo"
-                } text-white text-xs font-bold px-6 py-4 rounded-full`}
+                    ? "bg-logbutton"
+                    : "btn-hover"
+                } submit-btn`}
                 type="button"
                 onClick={switchMode}
               >
@@ -69,75 +70,43 @@ const Auth = () => {
               <button
                 className={`${
                   !isLogin
-                    ? "bg-secondaryTwo"
-                    : "transition bg-transparent hover:bg-secondaryTwo"
-                } text-white text-xs font-bold px-6 py-4 rounded-full`}
+                    ? "bg-logbutton"
+                    : "btn-hover"
+                } submit-btn`}
                 type="button"
                 onClick={switchMode}
               >
                 SIGN UP
               </button>
             </div>
-            <div>
-              {!isLogin && (
-                <div>
-                  <Label labelName="Name" />
-                  <Input inputName="name" type="text" bgColor="primaryTwo" />
-                </div>
-              )}
-              <div>
-                <Label labelName="Email" />
-                <Input inputName="email" type="email" bgColor="primaryTwo" />
-              </div>
-              <div>
-                <Label labelName="Password" />
-                <Input
-                  inputName="password"
-                  type="password"
-                  bgColor="primaryTwo"
-                />
-              </div>
-            </div>
-            <div className="text-center">
-              <button
-                type="button"
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-neutral font-extralight text-xs pt-6"
-              >
-                {!isLogin
-                  ? "Already have an account? Log In"
-                  : "Don't have an account? Sign Up"}
-              </button>
-              <ErrorMessage errorMessage={authData?.message} />
-            </div>
 
-            <button className="bg-secondaryTwo hover:bg-secondaryOne transition px-4 py-3 w-full rounded-md text-white font-bold mt-4 shadow-md">
-              {isLogin ? "Log In" : "Sign Up"}
-            </button>
-            <div className="flex items-center py-6">
-              <div className="w-1/2 h-px bg-white bg-opacity-40"></div>
-              <p className="text-white px-1 text-xs">OR</p>
-              <div className="w-1/2 h-px bg-white bg-opacity-40"></div>
-            </div>
-            {/* <div>
-              <GoogleLogin
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                onSuccess={googleSuccess}
-                onFailure={googleFailure}
-                cookiePolicy="single_host_origin"
-                render={(renderProps) => (
-                  <button
-                    className="bg-blue-600 hover:bg-blue-500 transition px-4 py-3 w-full rounded-md text-white font-bold mb-4 shadow-md"
-                    type="button"
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                  >
-                    <i className="fab fa-google mr-2"></i>Continue with Google
-                  </button>
-                )}
-              />
-            </div> */}
-          </form>
+            {!isLogin && (
+              <Form.Field>
+                <Label labelName="Name" />
+                <Input inputName="name" type="text" />
+              </Form.Field>
+            )}
+            <Form.Field>
+              <Label labelName="Email" />
+              <Input inputName="email" type="email" />
+            </Form.Field>
+            <Form.Field>
+              <Label labelName="Password" />
+              <Input inputName="password" type="password" />
+            </Form.Field>
+            <div className="login-redirection">
+                <span
+                  type="button"
+                  onClick={() => setIsLogin(!isLogin)}
+                >
+                  {!isLogin
+                    ? "Already have an account? Log In"
+                    : "Don't have an account? Sign Up"}
+                </span>
+                <ErrorMessage errorMessage={authData?.message} />
+              </div>
+            <Button type='submit' className="submit-button">{isLogin ? "Log In" : "Sign Up"}</Button>
+          </Form>
         </FormProvider>
       </div>
     </section>

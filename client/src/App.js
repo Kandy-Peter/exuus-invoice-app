@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App grid grid-cols-1 md:grid-cols-body grid-rows-mobile md:grid-rows-1 gap-16 md:gap-0 bg-primaryTwo font-display">
+      <div className="app-container">
         <Sidebar />
         <Routes>
             <Route exact path="/" element={<Dashboard />} />
