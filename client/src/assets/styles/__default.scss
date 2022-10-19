@@ -1,0 +1,45 @@
+@import './__colors.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg_color;
+}
+
+.main-btn {
+  background-color: $main_btn;
+  color: $text_color;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+.centered-item {
+  margin: 0 auto;
+}
+
+button {
+  border: none;
+  outline: none;
+}
