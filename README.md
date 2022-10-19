@@ -13,11 +13,11 @@ Invoice App is the easiest way to create professional invoices and estimates for
 
 ## 👨‍💻 Demo
 
-<a href="" target="blank">
+<a href="https://exuus-invoice-app.vercel.app/" target="blank">
 <img src="https://img.shields.io/website?url=https://invoice-app-sand.vercel.app/&logo=github&style=flat-square" />
 </a>
 
-Try out the website : [Invoice App]()
+Try out the website : [Invoice App](https://exuus-invoice-app.vercel.app/)
 
 ## 🛠️ Installation Steps
 
