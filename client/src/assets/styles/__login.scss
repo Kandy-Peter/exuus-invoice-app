@@ -1,0 +1,31 @@
+@import './__colors.scss';
+
+.form-container {
+  width: 100%;
+  height: 100vh;
+
+
+  .form-row {
+    background-color: $main_white;
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 30%;
+
+    .bg-logbutton {
+      background-color: $blue_bg;
+    };
+  
+    .btn-hover {
+      &:hover {
+        background-color: $main_btn;
+      }
+    }
+
+    .input {
+      width: 100%;
+    }
+  }
+  
+}

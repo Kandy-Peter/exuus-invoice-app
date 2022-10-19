@@ -16,3 +16,21 @@ body {
   font-size: 12px;
   font-weight: 500;
 }
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}

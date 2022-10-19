@@ -1,0 +1,54 @@
+@import './__colors.scss';
+
+.app-container {
+  display: flex;
+  align-items: flex-start;
+
+  .sidebar {
+    width: 110px;
+    background-color: $blue_bg;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+  }
+
+  .container {
+    width: 100%;
+    padding: 5%;
+    // flex: 1;
+
+    .header {
+      width: 90%;
+      margin: 0 auto;
+
+      .subheader {
+        font-weight: 500;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        .dropdown-list {
+          background-color: $main_white;
+          box-shadow: 2px 2px 2px 0px rgba(96, 96, 96, 0.75);
+          padding: 1rem;
+          min-width: 150px;
+          position: absolute;
+          top: 1.5rem;
+          left: 2%;
+          z-index: 1;
+
+          .dropdown-item {
+            padding: 0.5rem 0;
+            font-size: 12px;
+            font-weight: 500;
+            color: $text_color;
+          }
+        }
+      }
+    }
+  }
+}
