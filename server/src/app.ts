@@ -1,5 +1,5 @@
 import express, {Response, Request} from 'express';
-import db from './models';
+import db from './config/config';
 
 import createError from 'http-errors';
 import appPath from 'path';
@@ -10,6 +10,12 @@ import cors from 'cors';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 
+db.authenticate().then(() => {
+  console.log('Database connected');
+}).catch ( (err: any) => {
+  console.log('Error: ' + err);
+});
+
 const app = express();
 
 const port = process.env.PORT || 5000;
@@ -17,8 +23,6 @@ const port = process.env.PORT || 5000;
 // view engine setup
 app.set('views', appPath.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-db.sequelize.sync();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -46,7 +50,7 @@ app.use(function(err: any, req: Request, res: Response, next: any) {
 })
 
 app.listen(port, () => {
-  console.log('Server is running on port 3000');
+  console.log('Server is running on port ' + port);
 });
 
 module.exports = app;

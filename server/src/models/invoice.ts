@@ -1,85 +1,96 @@
-import {Model, InferAttributes,  InferCreationAttributes, CreationOptional, DataTypes, Sequelize} from 'sequelize';
+import { Model, DataTypes } from "sequelize";
+import db from '../config/config';
 
-const sequelize = new Sequelize();
-
-class Invoice extends Model<InferAttributes<Invoice>, InferCreationAttributes<Invoice>> {
-  declare id?: CreationOptional<number>;
-  declare description: string;
-  declare creator: string;
-  declare paymentDue: number;
-  declare invoiceDate: string;
-  declare clientName: string;
-  declare clientEmail: string;
-  declare paymentTerms: number;
-  declare senderAdress: string;
-  declare clientAdress: string;
-  declare items: string;
-  declare status: string;
-  declare total: number;
-  declare readonly createdAt?: CreationOptional<Date>;
-  declare readonly updatedAt?: CreationOptional<Date>;
+interface InvoiceAttributes {
+  id: number;
+  description: string;
+  creator: string;
+  paymentDue: number;
+  invoiceDate: string;
+  clientName: string;
+  clientEmail: string;
+  paymentTerms: number;
+  senderAdress: string;
+  clientAdress: string;
+  items: string;
+  status: string;
+  total: number;
 }
 
-Invoice.init(
-  {
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    description: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    creator: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    paymentDue: {
-      type: new DataTypes.NUMBER,
-      allowNull: false,
-    },
-    invoiceDate: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    clientName: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    clientEmail: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    paymentTerms: {
-      type: new DataTypes.NUMBER,
-      allowNull: false,
-    },
-    senderAdress: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    clientAdress: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    items: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    status: {
-      type: new DataTypes.STRING(128),
-      allowNull: false,
-    },
-    total: {
-      type: new DataTypes.NUMBER,
-      allowNull: false,
-    },
-  }, {
-    tableName: 'invoices',
-    sequelize
-  }
+class Invoice extends Model<InvoiceAttributes> implements InvoiceAttributes {
+  public id!: number;
+  public description!: string;
+  public creator!: string;
+  public paymentDue!: number;
+  public invoiceDate!: string;
+  public clientName!: string;
+  public clientEmail!: string;
+  public paymentTerms!: number;
+  public senderAdress!: string;
+  public clientAdress!: string;
+  public items!: string;
+  public status!: string;
+  public total!: number;
+}
 
-);
+Invoice.init( {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  creator: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  paymentDue: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  invoiceDate: {
+    type: DataTypes.DATE,
+    allowNull: false
+  },
+  clientName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  clientEmail: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  paymentTerms: {
+
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  senderAdress: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  clientAdress: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  items: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  total: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+}, {
+  tableName: "invoices",
+  sequelize: db
+});
 
 export default Invoice;
