@@ -18,7 +18,7 @@ const InvoiceFooter = ({ data }) => {
   if (user?.data?.googleId) {
     id = user?.data?.googleId;
   } else {
-    id = user?.data?._id;
+    id = user?.data?.id;
   }
 
   return (
@@ -62,7 +62,7 @@ const InvoiceFooter = ({ data }) => {
           {data[0].status !== "paid" && (
             <button
               className=""
-              onClick={() => dispatch(paidInvoice(data[0]._id))}
+              onClick={() => dispatch(paidInvoice(data[0].id))}
             >
               Mark As Paid
             </button>
