@@ -43,7 +43,7 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
     if (invoice) {
       await dispatch(updateInvoice(invoice._id, data));
       setOpenForm(!openForm);
-      history.push("/");
+      history("/");
       reset("", {
         keepValues: false,
       });
@@ -62,7 +62,7 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
         })
       );
       setOpenForm(!openForm);
-      history.push("/");
+      history("/");
     }
   };
 

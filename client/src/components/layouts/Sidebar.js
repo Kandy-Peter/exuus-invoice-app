@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    history.push("/");
+    history("/");
     setUser(null);
   };
 
