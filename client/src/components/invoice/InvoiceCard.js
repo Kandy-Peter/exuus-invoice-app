@@ -25,7 +25,7 @@ const InvoiceCard = ({ data }) => {
       >
           <h2>
             <span>#</span>
-            {data._id.substring(data._id.length - 6)}
+            {data.id.substring(data.id.length - 6)}
           </h2>
           <small>{`Due ${moment(
             data.paymentDue

@@ -6,8 +6,7 @@ import SkeletonCard from "../skeletons/SkeletonCard";
 
 const Invoices = () => {
   const invoices = useSelector((state) => state.invoices);
-  console.log('invoices', invoices.length);
-  console.log('data', invoices.data.length);
+
   return (
     <div className="invoices-container">
       {invoices.length > 0

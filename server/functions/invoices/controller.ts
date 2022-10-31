@@ -7,11 +7,7 @@ const getInvoices = async (req: express.Request, res: express.Response) => {
   try {
     const invoices = await Invoice.findAll();
 
-    return res.status(200).json({
-      message: "Success to get invoices",
-      status: 200,
-      data: invoices,
-    });
+    return res.status(200).json(invoices);
   } catch (err) {
     if (err instanceof Error) {
       return res.status(500).json({
@@ -30,11 +26,7 @@ const getInvoice = async (req: express.Request, res: express.Response) => {
       where: { id },
     });
 
-    return res.status(200).json({
-      message: "Success to get invoice",
-      status: 200,
-      data: invoice,
-    });
+    return res.status(200).json(invoice);
   } catch (err) {
     if (err instanceof Error) {
       return res.status(500).json({
@@ -62,11 +54,7 @@ const createInvoice = async (req: express.Request, res: express.Response) => {
       creator,
     });
 
-    return res.status(200).json({
-      message: "Success to create invoice",
-      status: 200,
-      data: invoice,
-    });
+    return res.status(200).json(invoice);
   }
   catch (err) {
 
@@ -91,11 +79,7 @@ const updateInvoice = async (req: express.Request, res: express.Response) => {
     if (invoice) {
       await invoice.update(req.body);
 
-      return res.status(200).json({
-        message: "Success to update invoice",
-        status: 200,
-        data: invoice,
-      });
+      return res.status(200).json(invoice);
     }
 
     return res.status(404).json({
@@ -156,11 +140,7 @@ async function paidInvoice (req: express.Request, res: express.Response) {
         status: 'paid'
       });
 
-      return res.status(200).json({
-        message: "Success to paid invoice",
-        status: 200,
-        data: invoice,
-      });
+      return res.status(200).json(invoice);
     }
 
     return res.status(404).json({

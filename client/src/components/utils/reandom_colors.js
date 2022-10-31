@@ -3,6 +3,4 @@ const randomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-console.log(randomColor());
-
 export default randomColor;
