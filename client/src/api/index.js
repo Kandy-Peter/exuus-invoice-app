@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: 'http://localhost:3000',
 });
 
 API.interceptors.request.use((req) => {
@@ -26,5 +26,5 @@ export const updateInvoice = (id, updateInvoice) =>
 export const paidInvoice = (id) =>
   API.patch(`/invoices/${id}/paid`, updateInvoice);
 
-export const signIn = (formData) => API.post("/user/signin", formData);
-export const signUp = (formData) => API.post("/user/signup", formData);
+export const signIn = (formData) => API.post("/users/signin", formData);
+export const signUp = (formData) => API.post("/users/signup", formData);

@@ -6,11 +6,13 @@ import SkeletonCard from "../skeletons/SkeletonCard";
 
 const Invoices = () => {
   const invoices = useSelector((state) => state.invoices);
+  console.log('invoices', invoices.length);
+  console.log('data', invoices.data.length);
   return (
     <div className="invoices-container">
       {invoices.length > 0
         ? invoices.map((cardData) => (
-            <InvoiceCard data={cardData} key={cardData._id} />
+            <InvoiceCard data={cardData} key={cardData.id} />
           ))
         : [1, 2, 3, 4, 5].map((n) => <SkeletonCard key={n} />)}
     </div>

@@ -10,7 +10,7 @@ const HeaderComponent = ({ openForm, setOpenForm }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const handleClick = () => {
-    if (user?.result?.name) {
+    if (user?.data?.name) {
       setOpenForm(!openForm);
     } else {
       setShowModal(true);

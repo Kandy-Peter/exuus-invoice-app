@@ -12,7 +12,7 @@ const ProfileModal = ({ logout, user }) => {
       {user && (
         <div className="m-2">
           <Avatar
-            name={user.result.name}
+            name={user.data.name}
             size="50"
             round={true}
             onClick={() => setIsOpen(!isOpen)}

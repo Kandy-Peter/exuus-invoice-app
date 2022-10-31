@@ -15,10 +15,10 @@ const InvoiceFooter = ({ data }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
 
-  if (user?.result?.googleId) {
-    id = user?.result?.googleId;
+  if (user?.data?.googleId) {
+    id = user?.data?.googleId;
   } else {
-    id = user?.result?._id;
+    id = user?.data?._id;
   }
 
   return (
@@ -38,7 +38,7 @@ const InvoiceFooter = ({ data }) => {
         <Icon name="download" />
         Download Invoice
       </Button>
-      {user?.result && id === data[0]?.creator ? (
+      {user?.data && id === data[0]?.creator ? (
         <>
           <Button
             onClick={() => setOpenForm(!openForm)}

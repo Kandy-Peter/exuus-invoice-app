@@ -39,7 +39,7 @@ const InvoiceDetailsHeader = ({ data }) => {
               <small>{capitalizeFirstLetter(data[0]?.status)}</small>
             </div>
           </div>
-          {user?.result?._id === data[0]?.creator ? (
+          {user?.data?._id === data[0]?.creator ? (
             <div className="md:flex hidden">
               <button
                 className="text-white text-xs font-bold px-6 py-4 rounded-full transition bg-borderOne hover:bg-gray-200 hover:text-borderOne"
