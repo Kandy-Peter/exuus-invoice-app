@@ -1,4 +1,4 @@
-FROM node:10-slim
+FROM node:14-slim
 
 RUN apt-get update \
     && mkdir -p /usr/share/man/man1 \
@@ -15,4 +15,4 @@ RUN npm install -g
 
 COPY . ./
 
-CMD npm start
+CMD npm run dev

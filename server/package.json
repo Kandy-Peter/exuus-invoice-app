@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "tsnd --respawn src/app.ts",
-    "dev": "node ./build/app.js"
+    "dev": "ts-node-dev --respawn build/app.js",
+    "build": "tsc"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
