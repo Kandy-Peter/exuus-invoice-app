@@ -55,7 +55,7 @@ const InvoiceFooter = ({ data }) => {
         
           {data[0].status !== "paid" && (
             <button
-              className=""
+              className="ui positive basic button"
               onClick={() => dispatch(paidInvoice(data[0].id))}
             >
               Mark As Paid
