@@ -56,7 +56,7 @@ const InvoiceCardDetails = ({ data }) => {
             </div>
             <div className="mt-2">
               <p className="">
-                {data[0].clientStreetAddress}
+                {data[0].clientAddress}
               </p>
               <p className="">{data[0].clientCity}</p>
               <p className="">{data[0].clientPostCode}</p>

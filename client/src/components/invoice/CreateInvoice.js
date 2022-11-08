@@ -120,24 +120,14 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
                   <Input inputName="city" type="text" />
                 </Form.Field>
               </Form.Group>
-              <Form.Group>
-                <Form.Field>
-                  <Label labelName="Street Address" />
-                  <Input inputName="streetAddress" type="text" />
-                </Form.Field>
-                <Form.Field>
-                    <Label labelName="City" />
-                    <Input inputName="city" type="text" />
-                </Form.Field>
-              </Form.Group>
-                <Form.Field className="md:mx-2">
-                  <Label labelName="Post Code" />
-                  <Input inputName="postCode" type="text" appearance />
-                </Form.Field>
-                <Form.Field>
-                  <Label labelName="Country" />
-                  <Input inputName="country" type="text" />
-                </Form.Field>
+              <Form.Field className="md:mx-2">
+                <Label labelName="Post Code" />
+                <Input inputName="postcode" type="text" appearance />
+              </Form.Field>
+              <Form.Field>
+                <Label labelName="Country" />
+                <Input inputName="country" type="text" />
+              </Form.Field>
               <Divider />
               <small className="text-secondaryTwo font-bold text-xs mt-8">
                 Bill To
@@ -153,7 +143,7 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
               <Form.Group>
                 <Form.Field>
                   <Label labelName="Street Address" />
-                  <Input inputName="clientStreetAddress" type="text" />
+                  <Input inputName="clientAddress" type="text" />
                 </Form.Field>
                   <Form.Field>
                     <Label labelName="City" />
@@ -163,7 +153,7 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
               <Form.Group>
                 <Form.Field className="md:mx-2">
                   <Label labelName="Post Code" />
-                  <Input inputName="clientPostCode" type="text" appearance />
+                  <Input inputName="clientPostcode" type="text" appearance />
                 </Form.Field>
                 <Form.Field>
                   <Label labelName="Country" />

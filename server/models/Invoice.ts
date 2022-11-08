@@ -5,16 +5,22 @@ interface InvoiceAttributes {
   id: string;
   description: string;
   creator: string;
-  paymentDue: number;
-  invoiceDate: string;
+  paymentDue: Date;
+  invoiceDate: Date;
   clientName: string;
   clientEmail: string;
   paymentTerms: number;
-  senderAdress: string;
-  clientAdress: string;
-  items: string;
   status: string;
   total: number;
+  streetAddress: string;
+  city : string;
+  postcode: string;
+  country: string;
+  clientStreetAddress: string;
+  clientCity : string;
+  clientPostcode: string;
+  clientCountry: string;
+  invoices: any;
 }
 
 class Invoice extends Model<InvoiceAttributes> {}
@@ -32,15 +38,15 @@ Invoice.init(
     },
     creator: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     paymentDue: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false
     },
     invoiceDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
     },
     clientName: {
       type: DataTypes.STRING,
@@ -55,24 +61,48 @@ Invoice.init(
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    senderAdress: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    clientAdress: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    items: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     status: {
       type: DataTypes.STRING,
       allowNull: false
     },
     total: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    streetAddress: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    postcode: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    clientStreetAddress: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    clientCity: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    clientPostcode: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    clientCountry: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    invoices: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     }
   },

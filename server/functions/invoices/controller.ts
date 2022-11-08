@@ -41,7 +41,7 @@ const createInvoice = async (req: express.Request, res: express.Response) => {
   try {
     const id = nanoid();
     let totalInvoice = 0;
-    let creator = req.userId
+    let creator = "kandy" //req.UserId;
 
     req.body.invoices && req.body.invoices.forEach((invoice: any) => {
       totalInvoice += invoice.price;
@@ -55,6 +55,11 @@ const createInvoice = async (req: express.Request, res: express.Response) => {
     });
 
     return res.status(200).json(invoice);
+    // return res.status(200).json({
+    //   message: "Success to create invoice",
+    //   status: 200,
+    //   data: invoice,
+    // });
   }
   catch (err) {
 

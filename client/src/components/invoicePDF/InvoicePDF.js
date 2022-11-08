@@ -165,7 +165,7 @@ const InvoicePDF = ({ data }) => {
                   </View>
                   <View style={{ marginTop: 6 }}>
                     <Text style={styles.description}>
-                      {data?.clientStreetAddress}
+                      {data?.clientAddress}
                     </Text>
                     <Text style={styles.description}>{data?.clientCity}</Text>
                     <Text style={styles.description}>
