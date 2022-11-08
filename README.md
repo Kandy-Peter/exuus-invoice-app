@@ -43,14 +43,19 @@ npm install or yarn install
 
  Using Docker: 
 ```bash
+cd server
 docker-compose build
 docker-compose up
 ```
 
   Without Docker: 
   ```bash
-  npm run dev or yarn dev
+  cd server
+  npm install(or yarn install)
+  npm run dev or yarn run dev
   ```
+
+5. Visit http://localhost:3001
 
 ## Environment Variables
 

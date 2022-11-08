@@ -48,10 +48,15 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 50%;
+    width: 100%;
 
     button {
       margin-right: 10px;
+    }
+
+    .paid_btn {
+      
+      color: $main_white;
     }
   }
 }

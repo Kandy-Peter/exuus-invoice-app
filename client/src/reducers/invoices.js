@@ -9,14 +9,14 @@ export default (invoices = [], action) => {
       return [...invoices, action.payload];
     case "UPDATE":
       return invoices.map((invoice) =>
-        invoice._id === action.payload._id ? action.payload : invoice
+        invoice.id === action.payload.id ? action.payload : invoice
       );
     case "PAID":
       return invoices.map((invoice) =>
-        invoice._id === action.payload._id ? action.payload : invoice
+        invoice.id === action.payload.id ? action.payload : invoice
       );
     case "DELETE":
-      return invoices.filter((invoice) => invoice._id !== action.payload);
+      return invoices.filter((invoice) => invoice.id !== action.payload);
     default:
       return invoices;
   }

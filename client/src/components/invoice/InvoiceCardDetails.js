@@ -3,6 +3,7 @@ import { formatDate, getSubstring } from "../utils/utils";
 import { Divider, Table } from "semantic-ui-react";
 
 const InvoiceCardDetails = ({ data }) => {
+
   if (data.length > 0) {
     return (
       <div className="item-details item-clm">
@@ -10,7 +11,7 @@ const InvoiceCardDetails = ({ data }) => {
           <div>
             <h1 className="">
               <span className="">#</span>
-              {getSubstring(data[0]._id, 6)}
+              {getSubstring(data[0].id, 6)}
             </h1>
             <p>
               {data[0].description}
@@ -56,7 +57,7 @@ const InvoiceCardDetails = ({ data }) => {
             </div>
             <div className="mt-2">
               <p className="">
-                {data[0].clientStreetAddress}
+                {data[0].clientAddress}
               </p>
               <p className="">{data[0].clientCity}</p>
               <p className="">{data[0].clientPostCode}</p>

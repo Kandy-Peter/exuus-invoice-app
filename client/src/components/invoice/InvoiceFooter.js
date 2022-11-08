@@ -11,15 +11,9 @@ import { Button, Icon } from "semantic-ui-react";
 const InvoiceFooter = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
   const [openForm, setOpenForm] = useState(false);
-  let id = "";
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-
-  if (user?.data?.googleId) {
-    id = user?.data?.googleId;
-  } else {
-    id = user?.data?._id;
-  }
+  const id = user?.data?.id;
 
   return (
     <div className="item-footer">
@@ -61,8 +55,8 @@ const InvoiceFooter = ({ data }) => {
         
           {data[0].status !== "paid" && (
             <button
-              className=""
-              onClick={() => dispatch(paidInvoice(data[0]._id))}
+              className="ui positive basic button"
+              onClick={() => dispatch(paidInvoice(data[0].id))}
             >
               Mark As Paid
             </button>
@@ -71,7 +65,7 @@ const InvoiceFooter = ({ data }) => {
       ) : null}
       {showModal && (
         <DeleteModal
-          invoiceId={data[0]._id}
+          invoiceId={data[0].id}
           showModal={showModal}
           setShowModal={setShowModal}
         />
