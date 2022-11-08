@@ -71,7 +71,7 @@ const InvoiceFooter = ({ data }) => {
       ) : null}
       {showModal && (
         <DeleteModal
-          invoiceId={data[0]._id}
+          invoiceId={data[0].id}
           showModal={showModal}
           setShowModal={setShowModal}
         />

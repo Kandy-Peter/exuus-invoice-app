@@ -129,7 +129,7 @@ const InvoicePDF = ({ data }) => {
               <View style={styles.invoiceDetail}>
                 <View>
                   <Text style={styles.text}>{`#${getSubstring(
-                    data?._id,
+                    data?.id,
                     6
                   )}`}</Text>
                   <Text style={styles.description}>{data?.description}</Text>
