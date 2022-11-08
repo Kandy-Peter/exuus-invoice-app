@@ -2,6 +2,7 @@ import express from "express";
 import { nanoid } from "nanoid";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { body} from "express-validator";
 
 import  User from "../../models/User.js";
 
@@ -28,6 +29,24 @@ export const userSingUp = async (req: express.Request, res: express.Response) =>
   try {
     const id = nanoid();
     const password = bcrypt.hashSync(req.body.password, 8);
+    const validateEmail = (email: string) => {
+      const re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
+    const validateName = () => {
+      return body("name")
+        .notEmpty()
+        .withMessage("Name is required")
+        .isLength({ min: 3, max: 30 })
+        .withMessage("Name must be between 3 and 30 characters");
+    }
+
+    if (!validateEmail(req.body.email) || !validateName()) {
+      return res.status(400).json({
+        message: "Failed to create user, check your email or name length",
+        status: 400,
+      });
+    }
 
     const user = await User.create({
       ...req.body,
@@ -39,7 +58,7 @@ export const userSingUp = async (req: express.Request, res: express.Response) =>
       message: "Success to create user",
       status: 200,
       data: user,
-    });
+      });
   } catch (err) {
     if (err instanceof Error) {
       return res.status(500).json({

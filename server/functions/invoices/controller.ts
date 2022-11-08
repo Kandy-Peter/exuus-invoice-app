@@ -55,11 +55,6 @@ const createInvoice = async (req: express.Request, res: express.Response) => {
     });
 
     return res.status(200).json(invoice);
-    // return res.status(200).json({
-    //   message: "Success to create invoice",
-    //   status: 200,
-    //   data: invoice,
-    // });
   }
   catch (err) {
 
