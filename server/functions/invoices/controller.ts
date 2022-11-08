@@ -41,7 +41,7 @@ const createInvoice = async (req: express.Request, res: express.Response) => {
   try {
     const id = nanoid();
     let total = 0;
-    let creator = "kandy" //req.UserId;
+    let creator = req.userId;
 
     req.body.invoices && req.body.invoices.forEach((invoice: any) => {
       total += invoice.total;
@@ -169,4 +169,5 @@ export {
   createInvoice,
   updateInvoice,
   deleteInvoice,
+  paidInvoice
 };

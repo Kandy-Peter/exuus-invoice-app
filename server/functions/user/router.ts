@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post("/signup", InvoiceController.userSingUp);
 router.post("/signin", InvoiceController.userSingIn);
-router.get("/", middleware.auth, InvoiceController.getUsers);
+// router.get("/", middleware.auth, InvoiceController.getUsers);
 
 export default router;

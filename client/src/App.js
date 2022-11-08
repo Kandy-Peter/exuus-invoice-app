@@ -24,6 +24,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getInvoices());
+    console.log(JSON.parse(localStorage.getItem("profile")).data.token);
   }, [dispatch]);
 
   return (
