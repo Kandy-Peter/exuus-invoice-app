@@ -40,17 +40,17 @@ const getInvoice = async (req: express.Request, res: express.Response) => {
 const createInvoice = async (req: express.Request, res: express.Response) => {
   try {
     const id = nanoid();
-    let totalInvoice = 0;
+    let total = 0;
     let creator = "kandy" //req.UserId;
 
     req.body.invoices && req.body.invoices.forEach((invoice: any) => {
-      totalInvoice += invoice.price;
+      total += invoice.total;
     });
 
     const invoice = await Invoice.create({
       ...req.body,
       id,
-      totalInvoice,
+      total,
       creator,
     });
 

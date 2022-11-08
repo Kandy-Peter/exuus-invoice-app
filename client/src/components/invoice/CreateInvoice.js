@@ -143,7 +143,7 @@ const CreateInvoice = ({ openForm, setOpenForm, invoice }) => {
               <Form.Group>
                 <Form.Field>
                   <Label labelName="Street Address" />
-                  <Input inputName="clientAddress" type="text" />
+                  <Input inputName="clientStreetAddress" type="text" />
                 </Form.Field>
                   <Form.Field>
                     <Label labelName="City" />

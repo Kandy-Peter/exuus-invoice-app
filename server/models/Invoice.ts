@@ -5,8 +5,8 @@ interface InvoiceAttributes {
   id: string;
   description: string;
   creator: string;
-  paymentDue: Date;
-  invoiceDate: Date;
+  paymentDue: string;
+  invoiceDate: string;
   clientName: string;
   clientEmail: string;
   paymentTerms: number;
@@ -102,7 +102,7 @@ Invoice.init(
       allowNull: false
     },
     invoices: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.JSON),
       allowNull: false
     }
   },
@@ -112,4 +112,3 @@ Invoice.init(
 );
 
 export default Invoice;
-

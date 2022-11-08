@@ -20,7 +20,7 @@ const InvoiceCard = ({ data }) => {
   return (
     <Segment color={randomColor()} className="invoice-skeleton">
       <Link
-        to={`/invoice/${data._id}`}
+        to={`/invoice/${data.id}`}
         className="invoice-card"
       >
           <h2>

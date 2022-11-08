@@ -11,12 +11,13 @@ const InvoiceDetails = (props) => {
   const { id } = useParams();
 
   const invoice = useSelector((state) =>
-    state.invoices.find((invoice) => invoice._id === id)
+    state.invoices.find((invoice) => invoice.id === id)
   );
 
   useEffect(() => {
     if (invoice) {
       setInvoiceData([invoice]);
+      console.log(invoice);
     }
   }, [id, invoice]);
 
