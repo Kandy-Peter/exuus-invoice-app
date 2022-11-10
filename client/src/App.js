@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect} from "react";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { getInvoices } from "./actions/invoices";
 import Sidebar from "./components/layouts/Sidebar";
 
@@ -24,11 +26,22 @@ function App() {
 
   useEffect(() => {
     dispatch(getInvoices());
-    console.log(JSON.parse(localStorage.getItem("profile")).data.token);
   }, [dispatch]);
 
   return (
     <Router>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       <div className="app-container">
         <Sidebar />
         <Routes>

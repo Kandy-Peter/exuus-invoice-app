@@ -10,7 +10,7 @@ const ProfileModal = ({ logout, user }) => {
   return (
     <div className="relative block">
       {user && (
-        <div className="m-2">
+        <div className="profile-btn">
           <Avatar
             name={user.data.name}
             size="50"
@@ -23,6 +23,7 @@ const ProfileModal = ({ logout, user }) => {
       {isOpen && (
         <ul
           aria-label="sub-menu"
+          className="logout-btn"
         >
           <li>
             <Button
@@ -33,7 +34,7 @@ const ProfileModal = ({ logout, user }) => {
               }}
               icon
               labelPosition="left"
-              className="logout-btn"
+              className="lgt-btn"
             >
               <Icon name="log out" />
               Logout

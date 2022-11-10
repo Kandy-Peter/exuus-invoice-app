@@ -5,9 +5,12 @@
   align-items: flex-start;
 
   .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 110px;
     background-color: $blue_bg;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,6 +70,7 @@
 
     .container {
       padding: 5%;
+      margin-top: 60px;
 
       .header {
         width: 100%;
