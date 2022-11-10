@@ -1,17 +1,6 @@
-import { Request, Response } from 'express';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
+import * as middleware from "../../middlewares/index.js";
 
-export const validateUser = async (req: Request, res: Response, next: any) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      message: 'Validation failed',
-      status: 400,
-      errors: errors.array(),
-    });
-  }
-  next();
-}
 
 export const validateUserCreate = [
   body('name')
@@ -24,7 +13,14 @@ export const validateUserCreate = [
     .withMessage('Email must be a valid email address'),
   body('password')
     .trim()
-    .isLength({ min: 6 })
-    .withMessage('Password must be at least 6 characters long'),
-  validateUser,
+    .isLength({ min: 8 })
+    .withMessage('Password must be at least 8 characters long')
+    //add a custom validator to check if the password contains at least one number
+    .custom((value, { req }) => {
+      if (!/\d/.test(value)) {
+        throw new Error('Password must contain at least one number');
+      }
+      return true;
+    }),
+  middleware.handleValidationError,
 ];
