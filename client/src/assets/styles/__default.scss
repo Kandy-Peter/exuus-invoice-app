@@ -67,7 +67,16 @@ button {
 
 .logout-btn {
   position: fixed;
-  bottom: 2rem;
-  left: 10rem;
+  bottom: 3rem;
+  left: 8%;
   z-index: 1000;
+}
+
+@media screen and ( max-width: 770px) {
+  .logout-btn {
+    top: 10%;
+    right: 3.5%;
+    left: auto;
+    bottom: auto;
+  }
 }
