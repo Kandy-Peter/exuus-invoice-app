@@ -15,7 +15,7 @@ const DropdownButton = () => {
 
   const handleOnChange = (position) => {
     options.forEach((option, index) => {
-      console.log(position, index);
+      // console.log(position, index);
       if (position === index) {
         if (option.checked) {
           option.checked = false;

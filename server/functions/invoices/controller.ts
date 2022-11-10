@@ -5,9 +5,19 @@ import Invoice from "../../models/Invoice.js";
 
 const getInvoices = async (req: express.Request, res: express.Response) => {
   try {
-    const invoices = await Invoice.findAll();
+    const status = req.query?.status as string | undefined;
+    if (status) {
+      const invoices = await Invoice.findAll({
+        where: { status },
+      });
 
-    return res.status(200).json(invoices);
+      return res.status(200).json(invoices);
+    }
+    else {
+      const invoices = await Invoice.findAll();
+
+      return res.status(200).json(invoices);
+    }
   } catch (err) {
     if (err instanceof Error) {
       return res.status(500).json({
